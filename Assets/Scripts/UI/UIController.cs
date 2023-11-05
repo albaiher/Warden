@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     private const int RightClick = 1;
+    private float timeScale = 0f;
 
     [SerializeField] private AnimalRingMenu ringMenu;
 
@@ -24,6 +25,16 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(RightClick)) 
         {
+            if (ringMenu.gameObject.activeSelf)
+            {
+                timeScale = 1f;
+            }
+            else {
+                timeScale = 0f;
+            }
+
+            Time.timeScale = timeScale;
+
             ringMenu.gameObject.SetActive(!ringMenu.gameObject.activeSelf);
         }
     }

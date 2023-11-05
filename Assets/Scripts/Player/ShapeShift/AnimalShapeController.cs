@@ -41,6 +41,7 @@ public class AnimalShapeController : MonoBehaviour
         currentShape = index;
         currentAnimal = animalForms[currentShape];
         currentAnimal.SetActive(true);
+		Time.timeScale = 1f;
     }
 
     private int FindAnimal(GameObject shape)

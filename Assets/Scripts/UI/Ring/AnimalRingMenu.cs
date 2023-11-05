@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnimalRingMenu : MonoBehaviour
 {
     [SerializeField] private AnimalShapeRing[] ringShapes;
     [SerializeField] private RingPiece ringPiecePrefab;
     [SerializeField] private AnimalShapeController animalShapeController;
+    [SerializeField] private Image barIconSprite;
 
     private RingPiece[] ringPieces;
     private float degreesPerPiece;
@@ -78,6 +80,7 @@ public class AnimalRingMenu : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             animalShapeController.ShiftAnimalTo(ringShapes[activeElement].shape);
+            barIconSprite.sprite = ringShapes[activeElement].icon;
             this.gameObject.SetActive(false);
         }
     }

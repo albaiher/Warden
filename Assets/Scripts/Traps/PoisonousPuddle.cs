@@ -7,6 +7,7 @@ public class PoisonousPuddle: MonoBehaviour
 {
     private int PoisonTicks;
     private bool Poisoned;
+    [SerializeField] private int damage = 2;
     private PlayerController CurrentPlayer;
     private float Timer;
     private float TriggerInterval;
@@ -57,7 +58,7 @@ public class PoisonousPuddle: MonoBehaviour
             else
             {
                 Poisoned = true;
-                CurrentPlayer.takeDamage(2);
+                CurrentPlayer.takeDamage(damage);
                 Timer = 0f;
             }
         }

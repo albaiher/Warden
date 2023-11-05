@@ -28,6 +28,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!IsCurrentAnimal(currentAnimal))
+        {
+            currentAnimal = animalForms[FindAnimal()];
+            animator = currentAnimal.GetComponent<Animator>();
+        }
+
         // Check if the character is out of life
         if (currentHealth <= 0 && !Death)
         {
@@ -47,6 +54,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private bool IsCurrentAnimal(GameObject animal)
+    {
+        return animal.activeSelf;
+    }
+
+    private int FindAnimal()
+    {
+        int index = -1;
+
+        foreach (GameObject animal in animalForms)
+        {
+            if (IsCurrentAnimal(animal))
+            {
+                index = animalForms.IndexOf(animal);
+            }
+        }
+
+        return index;
+    }
     void Die()
     {
         if (animator != null)
