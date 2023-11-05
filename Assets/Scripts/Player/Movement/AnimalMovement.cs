@@ -11,7 +11,9 @@ public class AnimalMovement : MonoBehaviour
     private GameObject currentAnimal;
     private float horizontalInput;
     private float verticalInput;
-    
+
+    private float gravity = -9.18f;
+
     private CharacterController characterController;
 
     // Start is called before the first frame update
@@ -26,6 +28,7 @@ public class AnimalMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         Vector3 move = characterController.transform.forward * verticalInput;
+        move.y += gravity * Time.time;
         characterController.Move(move * Time.deltaTime * speed);
         characterController.transform.Rotate(Vector3.up * horizontalInput * turnSpeed * Time.deltaTime);
 
