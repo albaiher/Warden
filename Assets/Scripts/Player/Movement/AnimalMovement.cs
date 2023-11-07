@@ -17,7 +17,7 @@ public class AnimalMovement : MonoBehaviour
     
     private CharacterController characterController;
 
-    private float doubleTapTime = 0.1f; // Tiempo en segundos para considerar un doble toque
+    private float doubleTapTime = 0.2f; // Tiempo en segundos para considerar un doble toque
     private float lastVerticalInputTime = 0f;
 
 

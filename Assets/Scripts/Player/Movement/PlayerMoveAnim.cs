@@ -11,7 +11,7 @@ public class PlayerMoveAnim : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    private float doubleTapTime = 0.1f; // Tiempo en segundos para considerar un doble toque
+    private float doubleTapTime = 0.2f; // Tiempo en segundos para considerar un doble toque
     private float lastVerticalInputTime = 0f;
 
     // Start is called before the first frame update
@@ -69,7 +69,7 @@ public class PlayerMoveAnim : MonoBehaviour
         }
 
         //run
-        if (!isRunning && isWalking && Input.GetButtonDown("Vertical") && (Time.time - lastVerticalInputTime <= doubleTapTime))
+        if (!isRunning && verticalInput >= 0 && Input.GetButtonDown("Vertical") && (Time.time - lastVerticalInputTime <= doubleTapTime))
         {
             animator.SetBool("isRunning", true);
         }
