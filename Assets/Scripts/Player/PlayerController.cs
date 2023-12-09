@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using System;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] List<GameObject> animalForms;
+    [SerializeField] int potionHealth;
     private GameObject currentAnimal;
     Animator animator;
     
@@ -82,5 +83,40 @@ public class PlayerController : MonoBehaviour
             Death = true;
         }
 
+    }
+
+    public void HealPotion(int amount) 
+    {
+        Heal(amount);
+    }
+
+    public void ManaPotion(int amount)
+    {
+        Mana(amount);
+    }
+
+    public void HealFountain()
+    {
+        Heal(maxHealth);
+    }
+
+
+    private void Mana(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.setHealth(currentHealth);
+    }
+
+    private void Heal(int amount) 
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth) {
+            currentHealth = maxHealth;
+        }
+        healthBar.setHealth(currentHealth);
     }
 }
