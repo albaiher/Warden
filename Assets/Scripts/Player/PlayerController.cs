@@ -8,11 +8,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] List<GameObject> animalForms;
     [SerializeField] int potionHealth;
     private GameObject currentAnimal;
+    private RespawnController respawnController;
     Animator animator;
     
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+
+    public void ReachedCheckPoint(Vector3 position)
+    {
+        respawnController.SetLastCheckPoint(position);
+    }
+
     private bool Death;
 
 
