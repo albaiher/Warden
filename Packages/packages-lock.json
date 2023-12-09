@@ -1,14 +1,5 @@
 {
   "dependencies": {
-    "com.dgreenheck.openfracture": {
-      "version": "file:C:/Users/alvar/Desktop/Universidad/EVI/OpenFracture-main",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.30",
-        "com.unity.testtools.codecoverage": "1.0.1"
-      }
-    },
     "com.unity.animation.rigging": {
       "version": "1.2.1",
       "depth": 0,
