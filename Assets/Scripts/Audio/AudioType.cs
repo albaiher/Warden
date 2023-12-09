@@ -1,0 +1,15 @@
+﻿public enum AudioType {
+    None,
+    ST_MAIN_MENU,
+    ST_MAIN_SOUNDTRACK,
+    ST_MUERTE,
+    SFX_CAMINAR_LIGERO,
+    SFX_CORRER,
+    SFX_ROCA,
+    SFX_CURACION,
+    SFX_FUENTE,
+    SFX_MANA,
+    SFX_BOTON,
+    SFX_CAMINAR_PESADO
+}
+
