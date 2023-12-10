@@ -421,7 +421,7 @@ ModelImporter:
       curves: []
       events:
       - time: 1
-        functionName: ReloadTheScene
+        functionName: Pause
         data: 
         objectReferenceParameter: {fileID: 1335745780718190, guid: 01173114f5c6b34448f88a989cb04b6e, type: 3}
         floatParameter: 0
