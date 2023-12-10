@@ -92,13 +92,19 @@ public class SFXManager : MonoBehaviour
         this.StopAudio(AudioType.SFX_CAMINAR_PESADO);
         this.StopAudio(AudioType.SFX_CORRER);
     }
+
+    public void SetMasterLvl(float SfxLvl)
+    {
+        masterMixer.SetFloat("MasterLvl", Mathf.Log(SfxLvl) * 20);
+    }
+
     public void SetSfxLvl(float SfxLvl)
     {
-        masterMixer.SetFloat("SfxLvl", SfxLvl);
+        masterMixer.SetFloat("SfxLvl", Mathf.Log(SfxLvl) * 20);
     }
     public void SetMusicLvl(float MusicLvl)
     {
-        masterMixer.SetFloat("MusicLvl", MusicLvl);
+        masterMixer.SetFloat("MusicLvl", Mathf.Log(MusicLvl) * 20);
     }
 
     public void playBotonmenu()

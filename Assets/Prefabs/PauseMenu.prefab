@@ -421,10 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2041,6 +2041,7 @@ GameObject:
   - component: {fileID: 5572683918699015069}
   - component: {fileID: 6121732564489223442}
   - component: {fileID: 5703052306241514551}
+  - component: {fileID: 4766546612510040597}
   m_Layer: 0
   m_Name: SoundButton
   m_TagString: Untagged
@@ -2178,6 +2179,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundOnIcon: {fileID: 2325374570217294429}
   soundOffIcon: {fileID: 80774493156637630}
+--- !u!114 &4766546612510040597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527398754054786102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4a02d0308033a4ea674103c35a8054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderInstance: {fileID: 0}
 --- !u!1 &8544796274923684555
 GameObject:
   m_ObjectHideFlags: 0

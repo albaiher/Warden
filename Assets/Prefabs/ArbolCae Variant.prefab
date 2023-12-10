@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
       propertyPath: m_LocalScale.x
@@ -77,7 +77,7 @@ PrefabInstance:
       addedObject: {fileID: 4388298098294501756}
     - targetCorrespondingSourceObject: {fileID: 8916932963258096687, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7760065873458827256}
+      addedObject: {fileID: 8938952766117209467}
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
 --- !u!1 &2652437549072734140 stripped
 GameObject:
@@ -105,8 +105,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &7760065873458827256
-BoxCollider:
+--- !u!136 &8938952766117209467
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,6 +123,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.8179932, y: 9.62779, z: 2.5631027}
-  m_Center: {x: 0.0143585205, y: 3.8063421, z: -0.23355484}
+  serializedVersion: 2
+  m_Radius: 1.6
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 4.06, z: 0}
