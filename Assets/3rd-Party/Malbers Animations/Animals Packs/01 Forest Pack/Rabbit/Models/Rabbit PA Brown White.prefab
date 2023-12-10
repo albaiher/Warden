@@ -619,7 +619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4042561464955996}
   - component: {fileID: 95121386228153832}
-  - component: {fileID: 1199636633879361012}
+  - component: {fileID: 8852936123774307325}
   m_Layer: 20
   m_Name: Rabbit PA Brown White
   m_TagString: Untagged
@@ -666,7 +666,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1199636633879361012
+--- !u!114 &8852936123774307325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -675,9 +675,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1335745780718190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd1f83b76f8f39f48bb5a7c44cef7549, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a0a6705ee2491348872ca502eb9b2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathMenuUI: {fileID: 0}
 --- !u!1 &1359549978350860
 GameObject:
   m_ObjectHideFlags: 0
