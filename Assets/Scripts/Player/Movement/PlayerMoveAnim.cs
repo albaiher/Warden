@@ -7,12 +7,13 @@ public class PlayerMoveAnim : MonoBehaviour
 
     [SerializeField] List<GameObject> animalForms;
     private GameObject currentAnimal;
+    private CharacterController characterController;
     Animator animator;
     private float horizontalInput;
     private float verticalInput;
 
-    private float doubleTapTime = 0.2f; // Tiempo en segundos para considerar un doble toque
-    private float lastVerticalInputTime = 0f;
+    private float pushedTime = 0f;
+    private float timeToRun = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class PlayerMoveAnim : MonoBehaviour
 
         currentAnimal = animalForms[FindAnimal()];
         animator = currentAnimal.GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
     }
 
     private bool IsCurrentAnimal(GameObject animal)
@@ -50,67 +52,55 @@ public class PlayerMoveAnim : MonoBehaviour
             currentAnimal = animalForms[FindAnimal()];
             animator = currentAnimal.GetComponent<Animator>();
         }
+        bool runningKey = Input.GetKey(KeyCode.LeftShift);
+        bool skillKey = Input.GetKeyDown(KeyCode.Space);
 
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        bool isWalking = animator.GetBool("isWalking");
-        bool isRunning = animator.GetBool("isRunning");
-        bool isWalkingBack = animator.GetBool("isWalkingBack");
-        bool isTurningRight = animator.GetBool("isTurningRight");
-        bool isTurningLeft = animator.GetBool("isTurningLeft");
+        //correr a los 4 seg de mantener pulsado
+        if (verticalInput > 0)
+        {
+            pushedTime += Time.deltaTime;
 
-        //walk
-        if (!isWalking && verticalInput>0) {
-            animator.SetBool("isWalking", true);
+            if (pushedTime >= timeToRun)
+            {
+                animator.SetFloat("verticalSpeed", verticalInput, 0.05f, Time.deltaTime);
+            }
+            else
+            {
+                animator.SetFloat("verticalSpeed", verticalInput / 2, 0.05f, Time.deltaTime);
+            }
         }
-        else if (isWalking && verticalInput<=0) {
-            animator.SetBool("isWalking", false);
-        }
-
-        //run
-        if (!isRunning && verticalInput >= 0 && Input.GetButtonDown("Vertical") && (Time.time - lastVerticalInputTime <= doubleTapTime))
+        else
         {
-            animator.SetBool("isRunning", true);
-        }
-        else if(isRunning && verticalInput <= 0)
-        {
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isWalking", false);
-        }
-        if (Input.GetButtonUp("Vertical") && verticalInput >= 0)
-        {
-            lastVerticalInputTime = Time.time;
-            animator.SetBool("isWalking", false);
-            isWalking = false;
+            animator.SetFloat("verticalSpeed", verticalInput / 2, 0.05f, Time.deltaTime);
+            pushedTime = 0;
         }
 
-        //backwards
-        if (!isWalking && verticalInput<0) {
-            animator.SetBool("isWalkingBack", true);
-        }
-        else if (isWalkingBack && verticalInput>=0) {
-            animator.SetBool("isWalkingBack", false);
-        }
+        //correr con shift
+        //if (runningKey && verticalInput > 0)
+        //{
+        //    animator.SetFloat("verticalSpeed", verticalInput, 0.05f, Time.deltaTime);
+        //}
+        //else
+        //{
+        //    animator.SetFloat("verticalSpeed", verticalInput / 2, 0.05f, Time.deltaTime);
+        //}
 
-        //turn left
-        if(!isTurningLeft && horizontalInput<0 && verticalInput == 0)
-        {
-            animator.SetBool("isTurningLeft", true);
-        }
-        else if(isTurningLeft && horizontalInput >= 0)
-        {
-            animator.SetBool("isTurningLeft", false);
-        }
 
-        //turn right
-        if(!isTurningRight && horizontalInput > 0 && verticalInput == 0)
+        animator.SetFloat("horizontalSpeed", horizontalInput/2, 0.05f, Time.deltaTime);
+        
+        
+        //usar habilidad - esto activa la animacion
+        if (skillKey && characterController.isGrounded)
         {
-            animator.SetBool("isTurningRight", true);
-        }
-        else if(isTurningRight && horizontalInput <= 0)
-        {
-            animator.SetBool("isTurningRight", false);
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            //si no está saltando, usa habilidad
+            if (!stateInfo.IsName("Jump"))
+            {
+                animator.SetTrigger("useSkill");
+            }
         }
 
     }
