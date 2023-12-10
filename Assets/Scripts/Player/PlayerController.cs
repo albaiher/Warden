@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
         return index;
     }
+
     void Die()
     {
         if (animator != null)
@@ -125,5 +126,16 @@ public class PlayerController : MonoBehaviour
             currentHealth = maxHealth;
         }
         healthBar.setHealth(currentHealth);
+    }
+
+    public int currentTransformation()
+    {
+        if (currentAnimal == animalForms[0])
+        {
+            return 0;
+        }
+
+        else
+            return 1;
     }
 }

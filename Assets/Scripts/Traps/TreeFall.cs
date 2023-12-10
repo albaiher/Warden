@@ -6,14 +6,14 @@ public class TreeFall : MonoBehaviour
 {
 
     Animator animator;
-    public GameObject currentAnimal;
+    public GameObject tree;
     private bool fallen;
 
     // Start is called before the first frame update
     void Start()
     {
         fallen = false;
-        animator = currentAnimal.GetComponent<Animator>();
+        animator = tree.GetComponent<Animator>();
     }
 
     // Update is called once per frame
