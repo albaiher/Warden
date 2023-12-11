@@ -234,6 +234,7 @@ MonoBehaviour:
   pingPongDelay: 0
   disableWhenFinish: 1
   disableDelay: 0
+  shapeShifterUI: {fileID: 0}
 --- !u!1 &2247953010954887983
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +316,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
