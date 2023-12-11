@@ -9,11 +9,14 @@ public class TreeFall : MonoBehaviour
     public GameObject tree;
     private bool fallen;
 
+    private SFXManager sfxManager;
+
     // Start is called before the first frame update
     void Start()
     {
         fallen = false;
         animator = tree.GetComponent<Animator>();
+        sfxManager = SFXManager.Instance;
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class TreeFall : MonoBehaviour
             if (player != null && animator != null)
             {
                 // The colliding object is the player, call the player's method to subtract life
+                sfxManager.PlayAudio(AudioType.SFX_FALLING_TREE);
                 animator.SetTrigger("isPlayerNear");
             }
             fallen = true;

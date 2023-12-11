@@ -23,6 +23,9 @@ public class Fracture : MonoBehaviour
     /// </summary>
     private GameObject fragmentRoot;
 
+    private SFXManager sfxManager;
+    private bool rockDestroyed = false;
+
     [ContextMenu("Print Mesh Info")]
     public void PrintMeshInfo()
     {
@@ -64,6 +67,11 @@ public class Fracture : MonoBehaviour
         }
     }
 
+
+    void Start() 
+    {
+        sfxManager = SFXManager.Instance;
+    }
     void OnCollisionEnter(Collision collision)
     {
         /*
@@ -110,8 +118,10 @@ public class Fracture : MonoBehaviour
     {
         PlayerController player = other.GetComponent<PlayerController>();
 
-        if (player != null && player.currentTransformation() == 0 && Input.GetKeyDown("space"))
+        if (player != null && player.currentTransformation() == 0 && Input.GetKeyDown("space") && !rockDestroyed)
         {
+            rockDestroyed = true;
+            sfxManager.PlayAudio(AudioType.SFX_ROCA);
             callbackOptions.CallOnFracture(other, gameObject, transform.position);
             this.ComputeFracture();
         }

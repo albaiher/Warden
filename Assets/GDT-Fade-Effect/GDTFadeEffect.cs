@@ -13,6 +13,9 @@ public class GDTFadeEffect : MonoBehaviour
     public float pingPongDelay;
     public bool disableWhenFinish=true;
     public float disableDelay;
+
+    [SerializeField]
+    private GameObject shapeShifterUI;
     private float speed;
     private Image blackImage;
     private float currentValue;
@@ -117,6 +120,7 @@ public class GDTFadeEffect : MonoBehaviour
                 if (disableWhenFinish)
                 {
                     Invoke("Disable", disableDelay);
+                    shapeShifterUI.SetActive(true);
                 }
             }
         }

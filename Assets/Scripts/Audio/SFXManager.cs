@@ -16,6 +16,27 @@ public class SFXManager : MonoBehaviour
     public AudioMixer masterMixer;
     public AudioTrack[] tracks;
 
+    private float masterLvl;
+    public float MasterLvl
+    {
+        get { return masterLvl; }
+    }
+
+    private float musicLvl;
+    public float MusicLvl
+    {
+        get { return musicLvl; }
+    }
+
+    private float sfxLvl;
+    public float SfxLvl
+    {
+        get { return sfxLvl; }
+    }
+
+
+    
+
     private Hashtable audioTable;
     private Hashtable jobTable;
     private AudioJob lastJobExecuted;
@@ -71,10 +92,11 @@ public class SFXManager : MonoBehaviour
     }
 
     void Start() {
-        PlayAudio(AudioType.ST_MAIN_SOUNDTRACK);
+        PlayAudio(AudioType.ST_MAIN_MENU);
     }
 
     public void PlayAudio(AudioType type) {
+        Debug.Log("Me ejecuto cuando toca PlayAudio");
         AddJob(new AudioJob(AudioAction.START, type));
     }
     public void StopAudio(AudioType type)
@@ -93,18 +115,21 @@ public class SFXManager : MonoBehaviour
         this.StopAudio(AudioType.SFX_CORRER);
     }
 
-    public void SetMasterLvl(float SfxLvl)
+    public void SetMasterLvl(float lvl)
     {
-        masterMixer.SetFloat("MasterLvl", Mathf.Log(SfxLvl) * 20);
+        masterLvl = lvl;
+        masterMixer.SetFloat("MasterLvl", Mathf.Log(masterLvl) * 20);
     }
 
-    public void SetSfxLvl(float SfxLvl)
+    public void SetSfxLvl(float lvl)
     {
-        masterMixer.SetFloat("SfxLvl", Mathf.Log(SfxLvl) * 20);
+        sfxLvl = lvl;
+        masterMixer.SetFloat("SfxLvl", Mathf.Log(sfxLvl) * 20);
     }
-    public void SetMusicLvl(float MusicLvl)
+    public void SetMusicLvl(float lvl)
     {
-        masterMixer.SetFloat("MusicLvl", Mathf.Log(MusicLvl) * 20);
+        musicLvl = lvl;
+        masterMixer.SetFloat("MusicLvl", Mathf.Log(musicLvl) * 20);
     }
 
     public void playBotonmenu()
@@ -118,6 +143,9 @@ public class SFXManager : MonoBehaviour
         audioTable = new Hashtable();
         jobTable = new Hashtable();
         lastJobExecuted = new AudioJob(AudioAction.START, AudioType.None);
+        masterLvl = 1f;
+        musicLvl = 1f;
+        sfxLvl = 1f;
         GenerateAudioTable();
         DontDestroyOnLoad(this.gameObject);
     }

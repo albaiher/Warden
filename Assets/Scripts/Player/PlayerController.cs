@@ -36,17 +36,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!IsCurrentAnimal(currentAnimal))
-        {
-            currentAnimal = animalForms[FindAnimal()];
-            animator = currentAnimal.GetComponent<Animator>();
-        }
-
-        // Check if the character is out of life
         if (currentHealth <= 0 && !Death)
         {
             Die();
+        }
+        else 
+        {
+            if (!IsCurrentAnimal(currentAnimal))
+            {
+                currentAnimal = animalForms[FindAnimal()];
+                animator = currentAnimal.GetComponent<Animator>();
+            }
         }
     }
 

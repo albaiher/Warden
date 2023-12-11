@@ -32,8 +32,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 787817489027090595}
   - {fileID: 7679679773816874905}
+  - {fileID: 787817489027090595}
   - {fileID: 2107631137874174616}
   - {fileID: 3434200249073494888}
   m_Father: {fileID: 0}
@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalForms:
-  - {fileID: 785587509716568235}
   - {fileID: 7675712722807997905}
+  - {fileID: 785587509716568235}
   - {fileID: 2104638088643218602}
 --- !u!114 &2396557520651680155
 MonoBehaviour:
@@ -94,9 +94,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalForms:
-  - {fileID: 785587509716568235}
   - {fileID: 7675712722807997905}
+  - {fileID: 785587509716568235}
   - {fileID: 2104638088643218602}
+  potionHealth: 0
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
@@ -113,8 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalForms:
-  - {fileID: 785587509716568235}
   - {fileID: 7675712722807997905}
+  - {fileID: 785587509716568235}
   - {fileID: 2104638088643218602}
 --- !u!1 &5276027865451579477
 GameObject:
@@ -127,6 +128,7 @@ GameObject:
   - component: {fileID: 3434200249073494888}
   - component: {fileID: 7925787079164792740}
   - component: {fileID: 1579742593894457239}
+  - component: {fileID: 7166631954385489666}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -141,8 +143,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5276027865451579477}
-  m_LocalRotation: {x: 0.24239096, y: -0.3386542, z: 0.090742275, w: 0.9046137}
-  m_LocalPosition: {x: 1.68, y: 2.05, z: -0.76}
+  m_LocalRotation: {x: 0.2785246, y: 0.18891521, z: -0.055976037, w: 0.94000095}
+  m_LocalPosition: {x: -156.84503, y: 2.717, z: 72.71294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -180,11 +182,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 100
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -208,6 +210,40 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5276027865451579477}
   m_Enabled: 1
+--- !u!114 &7166631954385489666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276027865451579477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 2
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &783754540583865469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -429,28 +465,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1827988484473126, guid: b58846aead748844a8311f61b2a6985f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5414405668890106665}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b58846aead748844a8311f61b2a6985f, type: 3}
 --- !u!1 &7675712722807997905 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1827988484473126, guid: b58846aead748844a8311f61b2a6985f, type: 3}
   m_PrefabInstance: {fileID: 7675227257214829815}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5414405668890106665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7675712722807997905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a4177cb165abe4fa54a0049b73437f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7679679773816874905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4598804954538862, guid: b58846aead748844a8311f61b2a6985f, type: 3}

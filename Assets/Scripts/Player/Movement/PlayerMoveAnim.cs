@@ -9,11 +9,12 @@ public class PlayerMoveAnim : MonoBehaviour
     private GameObject currentAnimal;
     private CharacterController characterController;
     Animator animator;
+    private SFXManager sfxManager;
     private float horizontalInput;
     private float verticalInput;
 
     private float pushedTime = 0f;
-    private float timeToRun = 4f;
+    private float timeToRun = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class PlayerMoveAnim : MonoBehaviour
         currentAnimal = animalForms[FindAnimal()];
         animator = currentAnimal.GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        sfxManager = SFXManager.Instance;
     }
 
     private bool IsCurrentAnimal(GameObject animal)

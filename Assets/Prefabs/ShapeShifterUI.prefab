@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringShapes:
-  - {fileID: 11400000, guid: 2334e6ba0bb42004ba1892adba20402d, type: 2}
   - {fileID: 11400000, guid: 088c615dded86a244b935bb608e22a31, type: 2}
+  - {fileID: 11400000, guid: 2334e6ba0bb42004ba1892adba20402d, type: 2}
   - {fileID: 11400000, guid: 07c54bc4938969645ba7868e6a1f705b, type: 2}
   ringPiecePrefab: {fileID: 647240486707916957, guid: faa15493896bf3e46b5cf4f47613f20d, type: 3}
   animalShapeController: {fileID: 0}
