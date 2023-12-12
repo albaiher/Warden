@@ -101,8 +101,15 @@ public class PlayerMoveAnim : MonoBehaviour
             //si no está saltando, usa habilidad
             if (!stateInfo.IsName("Jump"))
             {
+                
                 animator.SetTrigger("useSkill");
+                if (currentAnimal.name == "Deer Female")
+                {
+                    onAnimation onAnimation = currentAnimal.GetComponent<onAnimation>();
+                    onAnimation.updateYSpeed();
+                }
             }
+            
         }
 
     }

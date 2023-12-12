@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     public int currentTransformation()
     {
-        if (currentAnimal == animalForms[0])
+        if (currentAnimal.name == "Boar")
         {
             return 0;
         }

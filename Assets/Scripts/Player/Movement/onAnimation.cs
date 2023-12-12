@@ -25,13 +25,18 @@ public class onAnimation : MonoBehaviour
     {
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
-        if (animator && animator.GetBool("useSkill"))
-        {
-            if (gameObject.name == "Deer Female" && characterController.isGrounded)
-            {
-                ySpeed = jumpSpeed;
-            }
-        }
+        //if (animator && animator.GetBool("useSkill"))
+        //{
+        //    if (gameObject.name == "Deer Female" && characterController.isGrounded)
+        //    {
+        //        ySpeed = jumpSpeed;
+        //    }
+        //}
+    }
+
+    public void updateYSpeed()
+    {
+        ySpeed = jumpSpeed;
     }
 
     void OnAnimatorMove()

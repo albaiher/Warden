@@ -49,6 +49,7 @@ public class PauseManager : MonoBehaviour
 
     public void ReloadTheScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
