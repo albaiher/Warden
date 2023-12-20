@@ -13,6 +13,10 @@ public class Disapear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.localScale.x != 0.0 && transform.localScale.x != 0.0 && transform.localScale.x != 0.0)
+        {
+            transform.localScale -= new Vector3(1.0f, 1.0f, 1.0f);
+        }
         
     }
 
