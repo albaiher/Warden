@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    public GameObject currentAnimal;
     public GameObject dialogueUI;
     private bool viewDialogue;
     private float timerDialogue;
@@ -32,17 +31,10 @@ public class DialogueManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (viewDialogue == false)
-        {
-            // Check if the colliding object is the player
-            PlayerController player = other.GetComponent<PlayerController>();
-
-            if (player != null)
-            {
-                viewDialogue = true;
-                dialogueUI.SetActive(true);
-            }
-            
+        if (other.CompareTag("Player"))
+        {                
+            viewDialogue = true;
+            dialogueUI.SetActive(true);
         }
     }
 }

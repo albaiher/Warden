@@ -9,6 +9,7 @@ public class DeathManager : MonoBehaviour
     public GameObject deathMenuUI;
     public void ReloadTheScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -17,6 +18,12 @@ public class DeathManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoToMenu() 
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
     public void Pause()
     {

@@ -83,29 +83,17 @@ public class PlayerMoveAnim : MonoBehaviour
             pushedTime = 0;
         }
 
-        //correr con shift
-        //if (runningKey && verticalInput > 0)
-        //{
-        //    animator.SetFloat("verticalSpeed", verticalInput, 0.05f, Time.deltaTime);
-        //}
-        //else
-        //{
-        //    animator.SetFloat("verticalSpeed", verticalInput / 2, 0.05f, Time.deltaTime);
-        //}
-
-
         animator.SetFloat("horizontalSpeed", horizontalInput/2, 0.05f, Time.deltaTime);
-        
         
         //usar habilidad - esto activa la animacion
         if (skillKey && characterController.isGrounded && player.currentMana >= manaCostAbility)
         {
-            player.RegenMana(-manaCostAbility);
             AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             //si no está saltando, usa habilidad
             if (!stateInfo.IsName("Jump"))
             {
                 
+                player.RegenMana(-manaCostAbility);
                 animator.SetTrigger("useSkill");
                 if (currentAnimal.name == "Deer Female")
                 {
