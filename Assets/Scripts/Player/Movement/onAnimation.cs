@@ -16,13 +16,17 @@ public class onAnimation : MonoBehaviour
     {
         parent = gameObject.transform.parent.gameObject;
         animator = gameObject.GetComponent<Animator>();
-
+        
         characterController = parent.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!animator.enabled) 
+        {
+            animator.enabled = true;
+        }
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
         //if (animator && animator.GetBool("useSkill"))

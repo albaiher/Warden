@@ -8,16 +8,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] List<GameObject> animalForms;
     [SerializeField] int potionHealth;
     private GameObject currentAnimal;
-    private RespawnController respawnController;
+    private InventoryController inventory;
     Animator animator;
     
     public int maxHealth = 100;
+    public int maxMana = 100;
     public int currentHealth;
+    public int currentMana;
+    public ManaBar manaBar;
     public HealthBar healthBar;
 
     public void ReachedCheckPoint(Vector3 position)
     {
-        respawnController.SetLastCheckPoint(position);
+        HealFountain();
     }
 
     private bool Death;
@@ -36,6 +39,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inventory == null) 
+        {
+            inventory = InventoryController.Instance;
+        }
+
         if (currentHealth <= 0 && !Death)
         {
             Die();
@@ -46,6 +54,14 @@ public class PlayerController : MonoBehaviour
             {
                 currentAnimal = animalForms[FindAnimal()];
                 animator = currentAnimal.GetComponent<Animator>();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1)) 
+            {
+                inventory.ConsumeItem(ItemType.HEALTH_POTION);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2)) 
+            {
+                inventory.ConsumeItem(ItemType.MANA_POTION);
             }
         }
     }
@@ -84,13 +100,11 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        if (animator != null)
-        {
-            animator.SetBool("isDead", true);
-            animator.SetTrigger("deadTrigger");
-            Death = true;
-        }
+        if (animator == null) return;
 
+        Death = true;
+        animator.SetBool("isDead", Death);
+        animator.SetTrigger("deadTrigger");
     }
 
     public void HealPotion(int amount) 
@@ -106,17 +120,18 @@ public class PlayerController : MonoBehaviour
     public void HealFountain()
     {
         Heal(maxHealth);
+        Mana(maxMana);
     }
 
 
     private void Mana(int amount)
     {
-        currentHealth += amount;
-        if (currentHealth > maxHealth)
+        currentMana += amount;
+        if (currentMana > maxMana)
         {
-            currentHealth = maxHealth;
+            currentMana = maxMana;
         }
-        healthBar.setHealth(currentHealth);
+        manaBar.setMana(currentMana);
     }
 
     private void Heal(int amount) 

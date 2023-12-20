@@ -7,12 +7,17 @@ public class DeathManager : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject deathMenuUI;
-
     public void ReloadTheScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+
+    public void Revive() 
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void Pause()
     {
         deathMenuUI.SetActive(true);

@@ -8,17 +8,28 @@ public class InventoryController : MonoBehaviour
     private List<Item> inventory = new List<Item>();
     [SerializeField]
     private int MaxInventorySize;
-    [SerializeField]
     private PlayerController player;
     private int itemNotFounded = -1;
 
+    private static InventoryController instance = null;
+    public static InventoryController Instance
+    {
+        get { return instance; }
+    }
+
+    private void Start()
+    {
+        player = this.gameObject.GetComponent<PlayerController>();
+        EnsureSingleton();
+    }
 
     public void ConsumeItem(ItemType type) 
     {
-        if (IsNotConsumable(type)) return;
+        if (!IsConsumable(type)) return;
 
         int firstIndex = inventory.FindIndex(x => x.type == type);
 
+        Debug.Log(firstIndex);
         if(firstIndex != itemNotFounded)  {
 
             Item item = inventory[firstIndex];
@@ -37,16 +48,29 @@ public class InventoryController : MonoBehaviour
     
     }
 
-    public void AddItem(Item item) 
+    public void AddItem(Item item)
     {
-        if (inventory.Count < MaxInventorySize) 
-        {
-            inventory.Add(item);
-        }
+        if (!HasEnoughSpace()) return ;
+
+        inventory.Add(item);
     }
 
-    private bool IsNotConsumable(ItemType type) 
+    public bool HasEnoughSpace()
+    {
+        return inventory.Count < MaxInventorySize;
+    }
+
+    private bool IsConsumable(ItemType type) 
     {
         return type.Equals(ItemType.HEALTH_POTION) || type.Equals(ItemType.MANA_POTION);
     }
+
+    private void EnsureSingleton()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
 }

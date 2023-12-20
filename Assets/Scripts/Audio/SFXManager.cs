@@ -96,7 +96,6 @@ public class SFXManager : MonoBehaviour
     }
 
     public void PlayAudio(AudioType type) {
-        Debug.Log("Me ejecuto cuando toca PlayAudio");
         AddJob(new AudioJob(AudioAction.START, type));
     }
     public void StopAudio(AudioType type)
