@@ -6,7 +6,6 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] List<GameObject> animalForms;
-    [SerializeField] int potionHealth;
     private GameObject currentAnimal;
     private InventoryController inventory;
     Animator animator;
@@ -17,23 +16,13 @@ public class PlayerController : MonoBehaviour
     public int currentMana;
     public ManaBar manaBar;
     public HealthBar healthBar;
-
-    public void ReachedCheckPoint(Vector3 position)
-    {
-        HealFountain();
-    }
-
     private bool Death;
 
 
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.setMaxHealth(maxHealth);
-        Death = false;
-
-        currentAnimal = animalForms[0];
-        animator = currentAnimal.GetComponent<Animator>();
+        Configuration();
+        StartCoroutine(Regeneration());
     }
 
     // Update is called once per frame
@@ -66,6 +55,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Die()
+    {
+        if (animator == null) return;
+
+        Death = true;
+        animator.SetBool("isDead", Death);
+        animator.SetTrigger("deadTrigger");
+    }
     public void takeDamage(int amount)
     {
 
@@ -76,6 +73,49 @@ public class PlayerController : MonoBehaviour
             currentHealth -= amount;
             healthBar.setHealth(currentHealth);
         }
+    }
+
+    public void HealPlayer(int amount) 
+    {
+        Heal(amount);
+    }
+
+    public void RegenMana(int amount)
+    {
+        Mana(amount);
+    }
+
+    public void HealFountain()
+    {
+        Heal(maxHealth);
+        Mana(maxMana);
+    }
+    public int currentTransformation()
+    {
+        if (currentAnimal.name == "Boar")
+        {
+            return 0;
+        }
+
+        else
+            return 1;
+    }
+
+    public void ReachedCheckPoint(Vector3 position)
+    {
+        HealFountain();
+    }
+
+    private void Configuration()
+    {
+        currentHealth = maxHealth;
+        currentMana = maxMana;
+        healthBar.setMaxHealth(maxHealth);
+        manaBar.setMana(currentMana);
+        Death = false;
+
+        currentAnimal = animalForms[0];
+        animator = currentAnimal.GetComponent<Animator>();
     }
 
     private bool IsCurrentAnimal(GameObject animal)
@@ -98,32 +138,6 @@ public class PlayerController : MonoBehaviour
         return index;
     }
 
-    void Die()
-    {
-        if (animator == null) return;
-
-        Death = true;
-        animator.SetBool("isDead", Death);
-        animator.SetTrigger("deadTrigger");
-    }
-
-    public void HealPotion(int amount) 
-    {
-        Heal(amount);
-    }
-
-    public void ManaPotion(int amount)
-    {
-        Mana(amount);
-    }
-
-    public void HealFountain()
-    {
-        Heal(maxHealth);
-        Mana(maxMana);
-    }
-
-
     private void Mana(int amount)
     {
         currentMana += amount;
@@ -143,14 +157,15 @@ public class PlayerController : MonoBehaviour
         healthBar.setHealth(currentHealth);
     }
 
-    public int currentTransformation()
+    private IEnumerator Regeneration() 
     {
-        if (currentAnimal.name == "Boar")
+        while (true)
         {
-            return 0;
-        }
+            Debug.Log("Ejecutando cada 2 segundos");
 
-        else
-            return 1;
+            Heal(2);
+            Mana(2);
+            yield return new WaitForSeconds(2f);
+        }
     }
 }

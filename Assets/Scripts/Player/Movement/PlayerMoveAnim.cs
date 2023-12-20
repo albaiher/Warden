@@ -6,13 +6,15 @@ public class PlayerMoveAnim : MonoBehaviour
 {
 
     [SerializeField] List<GameObject> animalForms;
+    [SerializeField] int manaCostAbility = 10;
     private GameObject currentAnimal;
+
     private CharacterController characterController;
     Animator animator;
     private SFXManager sfxManager;
+    private PlayerController player;
     private float horizontalInput;
     private float verticalInput;
-
     private float pushedTime = 0f;
     private float timeToRun = 2f;
 
@@ -24,6 +26,7 @@ public class PlayerMoveAnim : MonoBehaviour
         animator = currentAnimal.GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         sfxManager = SFXManager.Instance;
+        player = this.GetComponent<PlayerController>();
     }
 
     private bool IsCurrentAnimal(GameObject animal)
@@ -95,8 +98,9 @@ public class PlayerMoveAnim : MonoBehaviour
         
         
         //usar habilidad - esto activa la animacion
-        if (skillKey && characterController.isGrounded)
+        if (skillKey && characterController.isGrounded && player.currentMana >= manaCostAbility)
         {
+            player.RegenMana(-manaCostAbility);
             AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             //si no está saltando, usa habilidad
             if (!stateInfo.IsName("Jump"))

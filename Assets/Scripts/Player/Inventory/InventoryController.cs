@@ -36,11 +36,11 @@ public class InventoryController : MonoBehaviour
             switch (type) 
             {
                 case ItemType.HEALTH_POTION:
-                    player.HealPotion(item.amount);
+                    player.HealPlayer(item.amount);
                     break;
 
                 case ItemType.MANA_POTION:
-                    player.ManaPotion(item.amount);
+                    player.RegenMana(item.amount);
                     break;
             }   
             inventory.RemoveAt(firstIndex);
