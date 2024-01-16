@@ -9,7 +9,7 @@ public class EndingDialogueController : MonoBehaviour
     [SerializeField] int letterPerSeconds;
     [SerializeField] TextMeshProUGUI dialogText;
     public GameObject panelUI;
-    private string[] texts = new string[5];
+    private string[] texts = new string[4];
     private int i = 0;
     private bool finished = false;
 
@@ -20,7 +20,6 @@ public class EndingDialogueController : MonoBehaviour
         texts[1] = "Sigo sin encontrar a Cyxta...";
         texts[2] = "La última vez que vagué por el Bosque de Jade las cosas estaban más tranquilas...";
         texts[3] = "Me duele demasiado la cabeza... \r\nLo peor de todo es que no parece que Laguna este cerca...";
-        texts[4] = "CONTINUARÁ.....";
         StartCoroutine(TypeDialog(texts[0], dialogText));
         i++;
     }
@@ -38,16 +37,16 @@ public class EndingDialogueController : MonoBehaviour
 
     public void ShowDialog()
     {
-        if (i >= 1 && i < 5 && finished)
+        if (i >= 1 && i < 4 && finished)
         {
             finished = false;
             StartCoroutine(TypeDialog(texts[i], dialogText));
             i++;
         }
 
-        if (i == 5 && finished)
+        if (i == 4 && finished)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
         }
     }
 }
